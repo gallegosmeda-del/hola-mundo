@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", "schedule:weekly"],
+  "rangeStrategy": "bump",
+  "labels": ["dependencies"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "schedule": ["at any time"]
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "labels": ["dependencies", "patch"]
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "labels": ["dependencies", "minor"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "major"]
+    },
+    {
+      "groupName": "type definitions",
+      "matchPackagePatterns": ["^@types/"]
+    }
+  ],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2
+}
